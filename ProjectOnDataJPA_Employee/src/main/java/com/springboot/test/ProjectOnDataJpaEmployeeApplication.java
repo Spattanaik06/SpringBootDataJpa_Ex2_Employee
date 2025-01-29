@@ -26,6 +26,13 @@ public class ProjectOnDataJpaEmployeeApplication {
 		//employeeService.deleteEmpByEntity();
 		//employeeService.deleteAllEmpByEntities();
 		
+		//employeeService.employeeSalary(24900.00);
+		//employeeService.employeeBasedOnAddress("Bbsr");
+		//employeeService.employeeBasedOnSalAndAddress(23400.00,"Bbsr");
+		
+		
+		//employeeService.customeQueryEmpDetails();
+		employeeService.CustomFindById(123);
 	}
 
 }

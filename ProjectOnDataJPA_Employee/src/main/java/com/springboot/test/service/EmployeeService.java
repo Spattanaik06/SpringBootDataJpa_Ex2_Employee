@@ -22,7 +22,7 @@ public class EmployeeService
 //		this.employeeRepository = employeeRepository;
 //	}
 
-	Employee emp1=new Employee(123,"Suresh","Bbsr",23450.00);
+	Employee emp1=new Employee(123,"Suresh","Bbsr",35450.00);
 	Employee emp2=new Employee(234,"Soubhagya","Bbsr",23400.00);
 	Employee emp3=new Employee(134,"Surya","Khordha",25000.00);
 	
@@ -143,6 +143,50 @@ public class EmployeeService
 	{
 		employeeRepository.deleteAll(listoEmployees);
 		showTableEmployee();
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	public void employeeSalary(Double sal)
+	{
+		List<Employee> empSalGreaterThanEqual = employeeRepository.findByEmpSalGreaterThan(sal);
+		empSalGreaterThanEqual.forEach(s->System.out.println(s));
+	}
+	
+	
+	
+	public void employeeBasedOnAddress(String add)
+	{
+		List<Employee> byEmpAddress = employeeRepository.findByEmpAddress(add);
+		byEmpAddress.forEach(s->System.out.println(s));
+	}
+	
+	public void employeeBasedOnSalAndAddress(Double sal,String add)
+	
+	{
+		List<Employee> salAndAddressEmployees=employeeRepository.findByEmpSalAndEmpAddress(sal, add);
+		salAndAddressEmployees.forEach(System.out::println);
+	}
+	
+	
+	public void customeQueryEmpDetails()
+	{
+		List<Employee> empDetails=employeeRepository.getAllEmployees();
+		empDetails.forEach(s->System.out.println(s));
+	}
+	public void CustomFindById(Integer id)
+	{
+		Optional<Employee> employeesById = employeeRepository.getEmployeesById(id);
+		System.out.println( employeesById);
 	}
 	
 }
