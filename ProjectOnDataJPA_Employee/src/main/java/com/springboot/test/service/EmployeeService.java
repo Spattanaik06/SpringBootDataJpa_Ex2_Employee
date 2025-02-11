@@ -5,6 +5,10 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Example;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.springboot.test.jpa.EmployeeRepository;
@@ -139,6 +143,8 @@ public class EmployeeService
 		showTableEmployee();
 	}
 	
+	
+	
 	public void deleteAllEmpByEntities()
 	{
 		employeeRepository.deleteAll(listoEmployees);
@@ -189,4 +195,56 @@ public class EmployeeService
 		System.out.println( employeesById);
 	}
 	
+	
+	
+	
+	
+	
+	
+	public void customeNativeQueryFindAllEmployee()
+	{
+		List<Employee> allEmployeesByQuery = employeeRepository.getAllEmployeesByQuery();
+		allEmployeesByQuery.forEach(System.out::println);
+	}
+	public void customeQueryDeleteEmpById(Integer Id)
+	
+	{
+		employeeRepository.deleteEmployeeByIdInCustomeQuery(Id);
+		showTableEmployee();
+	}
+	
+	
+	
+	
+	
+	public void empSorting(String empname)
+	{
+		Sort sort= Sort.by(empname).descending();
+		List<Employee> all = employeeRepository.findAll(sort);
+		all.forEach(System.out::println);
+		
+	}
+	
+	
+	
+	public void pagination(int pageSize,int pageNo)
+	{
+		PageRequest pageRequest = PageRequest.of(pageNo-1, pageSize);
+	    Page<Employee> pageAll = employeeRepository.findAll(pageRequest);
+	    List<Employee> content = pageAll.getContent();
+	    content.forEach(s->System.out.println(s));
+	    
+	}
+	
+	
+	
+	public void getEmployeebyQBE()
+	{
+		Employee employee=new Employee();
+		employee.setEmpAddress("Bbsr");
+		Example<Employee> example=Example.of(employee);
+		List<Employee> listOfEmp = employeeRepository.findAll(example);
+		listOfEmp.forEach(s->System.out.println(s));
+		
+	}
 }

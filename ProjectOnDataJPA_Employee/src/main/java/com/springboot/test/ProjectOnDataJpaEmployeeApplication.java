@@ -32,7 +32,17 @@ public class ProjectOnDataJpaEmployeeApplication {
 		
 		
 		//employeeService.customeQueryEmpDetails();
-		employeeService.CustomFindById(123);
+		//employeeService.CustomFindById(123);
+		
+		//employeeService.customeNativeQueryFindAllEmployee();
+		//employeeService.customeQueryDeleteEmpById(234);
+		
+		
+		//employeeService.empSorting("EmpName");
+		//employeeService.pagination(2, 2);
+		
+		
+		employeeService.getEmployeebyQBE();
 	}
 
 }
